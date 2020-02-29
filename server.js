@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4000;
 
 // database
-// const db = require('./models');
+const db = require('./models');
 
 // routes
 // const routes = require('./routes');
