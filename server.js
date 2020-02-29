@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 const db = require('./models');
 
 // routes
-// const routes = require('./routes');
+const routes = require('./routes');
 
 // ------ MIDDLEWARE
 
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 // ------ ROUTES
 
 // views
-// app.use('/', routes.views);
+app.use('/', routes.views);
 
 // api
 // app.use('/api/v1', routes.api);
