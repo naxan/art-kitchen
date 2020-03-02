@@ -10,7 +10,7 @@ const PostSchema = new Schema({
     imageUrl: String,
     tags: [String],
     description: String,
-    owner: {
+    author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },

@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use('/', routes.views);
 
 // api
-// app.use('/api/v1', routes.api);
+app.use('/api/v1', routes.api);
 
 // ------ START SERVER
 app.listen(PORT, () => console.log(`Server running at localhost:${PORT}`));

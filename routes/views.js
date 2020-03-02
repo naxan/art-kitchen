@@ -22,7 +22,5 @@ router.get('/kitchen', (req, res) => {
     });
 });
 
-// FEED
-// leaving this empty until reach goals
 
 module.exports = router;
