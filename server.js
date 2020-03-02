@@ -6,10 +6,10 @@ const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 4000;
 
 // database
-// const db = require('./models');
+const db = require('./models');
 
 // routes
-// const routes = require('./routes');
+const routes = require('./routes');
 
 // ------ MIDDLEWARE
 
@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 // ------ ROUTES
 
 // views
-// app.use('/', routes.views);
+app.use('/', routes.views);
 
 // api
-// app.use('/api/v1', routes.api);
+app.use('/api/v1', routes.api);
 
 // ------ START SERVER
 app.listen(PORT, () => console.log(`Server running at localhost:${PORT}`));
