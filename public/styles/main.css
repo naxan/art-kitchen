@@ -127,6 +127,12 @@ body {
   background-color: #fff;
   color: black;
   padding-top: 20px;
+
+  margin-bottom: 30px;
+}
+main {
+  margin: 40px;
+
 }
 .thumb {
   width: 200px;
@@ -136,12 +142,8 @@ body {
   border: 2px solid white;
   border-radius: 2%;
 }
-.desc {
-  width: 400px;
-  height: 198px;
-  background-color: #fff;
-  border-radius: 1%;
-  margin-left: 8px;
+.card {
+  color: #333;
 }
 
 section  {
