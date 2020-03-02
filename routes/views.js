@@ -3,13 +3,13 @@ const router = express.Router();
 
 // HOME
 router.get('/', (req, res) => {
-    res.sendFile('views/home.html', {
+    res.sendFile('views/index.html', {
         root: __dirname + '/../',
     });
 });
 
 // PROFILE
-router.get('/profile/:id', (req, res) => {
+router.get('/profile', (req, res) => {
     res.sendFile('views/profile.html', {
         root: __dirname + '/../',
     });
@@ -19,6 +19,13 @@ router.get('/profile/:id', (req, res) => {
 router.get('/kitchen', (req, res) => {
     res.sendFile('views/generator.html', {
         root: __dirname + '/../',
+    });
+});
+
+// FEED
+router.get('/feed', (req, res) => {
+    res.sendFile('views/feed.html', {
+        root: __dirname + '/../'
     });
 });
 
