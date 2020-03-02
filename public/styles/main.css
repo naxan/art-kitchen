@@ -121,13 +121,38 @@ body {
 /*
  * Profile
  */
+#user-profile {
+  max-width: 250px;
+  height: 500px;
+  background-color: #fff;
+  color: black;
+  padding-top: 20px;
+
+  margin-bottom: 30px;
+}
+main {
+  margin: 40px;
+
+}
 .thumb {
   width: 200px;
   height: 200px;
   background-color: #fff;
   margin: 2px;
+  border: 2px solid white;
+  border-radius: 2%;
+}
+.card {
+  color: #333;
 }
 
+section  {
+ margin-left: 20px;
+ 
+}
+ article {
+margin-bottom: 12px;
+ }
 
 /*
  * Footer
