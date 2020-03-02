@@ -27,21 +27,6 @@ const exampleUsers = [
     },
 ];
 
-const examplePosts = [
-    {
-        title: 'This is a post',
-        body: 'I am writing a post on social media',
-        tags: ['aliens', 'giraffe', 'candy'],
-        description: 'This is a post about frogs and mushrooms',
-    },
-    {
-        title: 'Example 2',
-        body: 'The frog sits on a shroom. The shroom does not have room. The shroom in the room goes kaboom, boom boom boom.',
-        tags: ['balloons', 'frog', 'mushroom'],
-        description: 'This is a post about frogs and mushrooms',
-    }
-]
-
 // delete users
 db.User.deleteMany({}, (err, deletedUsers) => {
     if (err) {
