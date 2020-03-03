@@ -41,37 +41,38 @@ function postTemplate(post) {
     // if post has an image, create an art post
     if (post.imageUrl) {
         return `
-        <div class="card mb-1 art-post">
-        <img src="${post.imageUrl}" class="card-img-top" alt="${post.title}">
-        <div class="card-body">
-          <h5 class="card-title title">${post.title}</h5>
-          <p class="card-text description">${post.description}</p>
-          <div class="row mb-0 tags"> 
-            <button class="btn btn-primary flora-tag">${post.tags[0]}</button>
-            <button class="btn btn-success fauna-tag">${post.tags[1]}</button>
-            <button class="btn btn-info mat-tag">${post.tags[2]}</button>
-            <button class="btn btn-danger mach-tag">${post.tags[3]}</button>
-          </div>
-        </div>
-      </div>
+      <div class="card mb-1 ml-1 art-post">
+              <img src="${post.imageUrl}" class="card-img-top" alt="${post.title}">
+              <div class="card-body">
+                <h5 class="card-title title">${post.title}</h5>
+                <p class="card-text description">${post.description}</p>
+                <div class="row mb-0 tags"> 
+                  <button class="tag btn flora-tag">${post.tags[0]}</button>
+                  <button class="tag btn fauna-tag">${post.tags[1]}</button>
+                  <button class="tag btn mat-tag">${post.tags[2]}</button>
+                  <button class="tag btn mach-tag">${post.tags[3]}</button>
+                </div>
+              </div>
+            </div>
         `;
     } 
     // if post does NOT have image, create a text post
     else {
         return `
-        <div class="card mb-1 text-post">
-        <div class="card-body">
-          <h5 class="card-title title">${post.title}</h5>
-          <p class="card-text description">${post.description}</p>
-          <p class="card-text body">${post.body}</p>
-          <div class="row mb-0 tags"> 
-            <button class="btn btn-primary flora-tag">${post.tags[0]}</button>
-            <button class="btn btn-success fauna-tag">${post.tags[1]}</button>
-            <button class="btn btn-info mat-tag">${post.tags[2]}</button>
-            <button class="btn btn-danger mach-tag">${post.tags[3]}</button>
-          </div>
+      <div class="card mb-1 ml-1 text-post">
+      <div class="card-body">
+        <h5 class="card-title title" >${post.title}</h5>
+        <p class="card-text body">${post.body}</p>
+          <p class="text-muted">About this piece:</p>
+        <p class="text-muted description">${post.description}</p>
+        <div class="row mb-0 tags"> 
+            <button class="tag btn flora-tag">${post.tags[0]}</button>
+            <button class="tag btn fauna-tag">${post.tags[1]}</button>
+            <button class="tag btn mat-tag">${post.tags[2]}</button>
+            <button class="tag btn mach-tag">${post.tags[3]}</button>
         </div>
       </div>
+    </div>
         `;
     }
 }
