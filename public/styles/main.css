@@ -159,8 +159,17 @@ margin-bottom: 12px;
   height: 300px;
 }
 
-#art-post, #text-post{
+.art-post, .text-post{
   max-width: 300px;
+  min-width: 300px;
+}
+.description {
+  font-size: 14px;
+}
+.tag {
+    font-size: 14px;
+    margin: 0 auto;
+    
 }
 
 
