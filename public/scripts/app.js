@@ -16,6 +16,8 @@ loginBtn.addEventListener("click", () => {
     form.addEventListener('submit', handleLoginSubmit);
 })
 
+// functions
+
 function handleSignupSubmit(e) {
     let noErrorsFoundYet = true;
     const userData = {};
@@ -60,6 +62,16 @@ function handleSignupSubmit(e) {
         })
         .catch(err => console.log(err));
     }
+}
+
+function handleLoginSubmit(e) {
+    let noErrorsFoundYet = true;
+    const userData = {};
+    event.preventDefault();
+
+    document.querySelectorAll('.invalid-feedback').forEach((feedback) => feedback.remove());
+
+    
 }
 
 // event listeners
