@@ -175,8 +175,14 @@ margin-bottom: 12px;
 .post-menu {}
 
  /*
-  * Posts
+  * Posts / Generator
   */
+#generator {
+   background-image: url("/images/ingredients-bg.png");
+   width: 400px;
+   height: 400px;
+  background-size: contain;
+}
 
 /*
  * Footer
