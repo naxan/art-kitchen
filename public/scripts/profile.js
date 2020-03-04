@@ -4,9 +4,6 @@ const username = document.getElementById('username');
 const bio = document.getElementById('bio');
 const postContainer = document.getElementById('posts');
 
-const artPost = document.getElementById('art-post');
-const textPost = document.getElementById('text-post');
-
 // --- Functions
 
 // Fetch User Info
@@ -18,8 +15,6 @@ function fetchUser() {
         })
         .catch(err => console.log(err))
 };
-
-fetchUser();
 
 function render(user) {
     // render user's pro img and details
@@ -76,3 +71,6 @@ function postTemplate(post) {
         `;
     }
 }
+
+// --- CALLED FUNCTIONS
+fetchUser();
