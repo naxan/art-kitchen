@@ -27,11 +27,22 @@ function handlePostSubmit(e) {
     const body = document.getElementById('body');
     const description = document.getElementById('description');
 
+    const titleFeedback = document.querySelector('.title-fb');
+    const contentFeedback = document.querySelector('.content-fb');
+
+    titleFeedback && titleFeedback.remove();
+    contentFeedback && contentFeedback.remove();
+
     let formIsValid = false;
 
     if (title.value === '') {
         formIsValid = false;
-        console.log('please enter a title');
+        title.parentNode.insertAdjacentHTML('beforeend', 
+        `
+        <div class="invalid-fb title-fb">
+        Please enter a title.
+        </div>
+        `)
         return;
     } else {
         formIsValid = true;
@@ -40,6 +51,12 @@ function handlePostSubmit(e) {
     if (imageUrl.value === '' && body.value === '') {
         formIsValid = false;
         console.log('Please add either an image or your creative writing!')
+        body.parentNode.insertAdjacentHTML('beforeend', 
+        `
+        <div class="invalid-fb content-fb">
+        Please add either an image or your creative writing!
+        </div>
+        `)
         return;
     } else {
         formIsValid = true;
