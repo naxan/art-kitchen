@@ -10,10 +10,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    email: {
-        type: String,
-        required: true,
-    },
+    email: String,
     profileImage: String,
     bio: String,
     posts: [{
