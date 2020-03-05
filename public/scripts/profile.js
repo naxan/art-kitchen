@@ -1,14 +1,12 @@
-//import { text } from "body-parser";
-
 // --- CACHED ELEMENTS
 const profileImage = document.getElementById('profile-image');
 const username = document.getElementById('username');
 const bio = document.getElementById('bio');
 const postContainer = document.getElementById('posts');
 
-// --- Functions
-
-// Populate page with user info and user posts
+// --------------------------------------------
+// --- POPULATE USER'S INFO AND POSTS
+// --------------------------------------------
 
 // Fetch User Info
 function fetchUser() {
@@ -111,7 +109,11 @@ function postTemplate(post) {
     }
 }
 
-// --------------------- Edit and Delete posts
+// --------------------------------------------
+// --- EDIT AND DELETE POSTS
+// --------------------------------------------
+
+// --- EDIT
 
 function handlePostEdit(e) {
   const thisCard = event.target.closest('.card');
@@ -139,6 +141,8 @@ function handlePostEdit(e) {
   const cancelBtn = thisCard.querySelector('.cancel-btn');
   cancelBtn.addEventListener('click', () => {
     thisCard.innerHTML = beforeChanges;
+
+    // Return event listeners to Edit and Delete Buttons
     const editBtns = document.querySelectorAll('.edit-btn');
     const deleteBtns = document.querySelectorAll('.delete-btn');
 
@@ -156,7 +160,6 @@ function handlePostEdit(e) {
   submitBtn.addEventListener('click', handleEditSubmit);
 }
 
-// -------------------------------------
 function handleEditSubmit(e) {
   event.preventDefault();
 
@@ -181,8 +184,6 @@ function handleEditSubmit(e) {
   }
 
   if (formIsValid) {
-    console.log('Your edits are good to go!');
-
     const updatedPost = {};
 
     if (title.value !== '') {
@@ -202,13 +203,13 @@ function handleEditSubmit(e) {
       .then(() => {
         postContainer.innerHTML = '';
         fetchUser();
-        console.log('tada!');
       })
       .catch(err => console.log(err))
   }
 } 
 
-// -------------------------------
+// --- DELETE
+
 function handleDeleteClick(e) {
   const thisCard = event.target.closest('.card');
   const postId = thisCard.id;
@@ -222,6 +223,8 @@ function handleDeleteClick(e) {
 
   thisCard.querySelector('.no-btn').addEventListener('click', () => {
     thisCard.innerHTML = originalCard;
+
+    // Return event listeners to Edit and Delete Buttons
     const editBtns = document.querySelectorAll('.edit-btn');
     const deleteBtns = document.querySelectorAll('.delete-btn');
 
@@ -232,6 +235,7 @@ function handleDeleteClick(e) {
     deleteBtns.forEach(btn => {
       btn.addEventListener('click', handleDeleteClick);
     })
+
   });
   thisCard.querySelector('.yes-btn').addEventListener('click', handlePostDestroy);
 }
@@ -240,14 +244,12 @@ function handlePostDestroy(e) {
   const thisCard = event.target.closest('.card');
   const postId = thisCard.id;
 
-  console.log('Deleting...')
   fetch(`/api/v1/posts/${postId}`, {
     method: 'DELETE'
   })
     .then(() => {
       postContainer.innerHTML = '';
       fetchUser();
-      console.log('Post deleted!');
     })
 }
 
