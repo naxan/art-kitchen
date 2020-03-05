@@ -13,7 +13,7 @@
 </head>
 
 <body class="text-center">
-  <div class="container-lg d-flex p-3 mx-auto flex-column">
+  <div class="container-sm d-flex p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">ArtKitchen</h3>
@@ -28,10 +28,18 @@
     </header>
 
     <main role="main" class="row">
-
       <aside class="card" id="user-profile">
+        <div class="btn-group post-menu">
+          <button id="profile-edit" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-item" type="button" for="edit">Edit</button>
+          </div>
+        </div>
         <img src="http://placebear.com/150/150" class="rounded mx-auto d-block" id="profile-image" alt="...">
         <div class="card-body">
+          
           <h5 class="card-title" id="username">JaneDoe</h5>
           <p class="card-text" id="bio">this is all about me
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae delectus dignissimos recusandae tempora
