@@ -18,4 +18,11 @@ router.post('/users/:userId/posts', ctrl.posts.create);
 router.put('/posts/:postId', ctrl.posts.update);
 router.delete('/posts/:postId', ctrl.posts.destroy);
 
+// USER AUTH
+
+router.post('/register', ctrl.auth.register);
+router.post('/login', ctrl.auth.login);
+router.delete('/logout', ctrl.auth.logout);
+router.get('/verify', ctrl.auth.verify);
+
 module.exports = router;
