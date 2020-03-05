@@ -173,10 +173,13 @@ function randomWord(arr) {
    return arr[Math.floor(Math.random() * arr.length)]
 };
 
-roll.addEventListener('click', () => {
+roll.addEventListener('click', displayWords);
+
+function displayWords() {
     fauna.textContent = randomWord(faunaList);
     flora.textContent = randomWord(floraList);
     mat.textContent = randomWord(matList);
     mach.textContent = randomWord(machList);
-})
+};
 
+displayWords();
