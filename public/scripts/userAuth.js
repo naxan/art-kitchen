@@ -1,5 +1,3 @@
-console.log("Don't Panic!")
-
 let loginBtn = document.getElementById("login")
 let loginSubmit = document.getElementById("login-submit")
 let signupSubmit = document.getElementById("signup-submit")
@@ -46,7 +44,6 @@ function handleSignupSubmit(e) {
 
     // submiting data to server if user is valid
     if (noErrorsFoundYet) {
-        console.log('user data being submitted: ', userData);
         fetch('/api/v1/register', {
             method: 'POST',
             headers: {
@@ -56,7 +53,6 @@ function handleSignupSubmit(e) {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             window.location = '/';
             alert('Account creation success! Now please log in to continue')
         })
@@ -88,10 +84,7 @@ function handleLoginSubmit(e) {
         }
     });
 
-    console.log(userData);
-
     if (noErrorsFoundYet) {
-        console.log('checking log in...');
         fetch('/api/v1/login', {
             method: 'POST',
             headers: {
