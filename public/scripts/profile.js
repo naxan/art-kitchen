@@ -31,11 +31,12 @@ function render(user) {
     bio.innerText = user.bio;
 
     // render user's posts
-    const postTemplates = user.posts.map((post) => {
-        return postTemplate(post);
-    }).join('');
+    let postTemplates = ``;
+    for (let i = user.posts.length - 1; i > -1; i--) {
+      postTemplates += postTemplate(user.posts[i]);
+    }
 
-    postContainer.insertAdjacentHTML('beforeend', postTemplates);
+    postContainer.insertAdjacentHTML('afterbegin', postTemplates);
 
     // set up event listeners on templated buttons
     const editBtns = document.querySelectorAll('.edit-btn');
@@ -134,9 +135,92 @@ function postTemplate(post) {
 // body set equal to updatedPost = {title: title.value, description: description.value}
 
 function handlePostEdit(e) {
-  const postId = event.target.closest('.card').id;
-  console.log(postId);
+  const thisCard = event.target.closest('.card');
+  const beforeChanges = thisCard.innerHTML;
+
+  // Change post to form template
+  const formTemplate = `
+  <form>
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control title-edit" aria-describedby="title">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" class="form-control description-edit">
+  </div>
+  <button type="submit" class="btn btn-primary submit-btn">Submit Changes</button>
+  <button class="btn cancel-btn">Cancel</button>
+</form>
+  `
+
+  thisCard.innerHTML = formTemplate;
+
+  // Cancel Button functionality
+  const cancelBtn = thisCard.querySelector('.cancel-btn');
+  cancelBtn.addEventListener('click', () => {
+    thisCard.innerHTML = beforeChanges;
+    const editBtns = document.querySelectorAll('.edit-btn');
+    editBtns.forEach(editBtn => {
+      editBtn.addEventListener('click', handlePostEdit);
+    });
+  });
+
+  // Form Submit
+  const submitBtn = thisCard.querySelector('.submit-btn');
+  submitBtn.addEventListener('click', handleEditSubmit);
 }
+
+function handleEditSubmit(e) {
+  event.preventDefault();
+
+  const thisCard = event.target.closest('.card');
+  const postId = thisCard.id;
+  const title = thisCard.querySelector('.title-edit');
+  const description = thisCard.querySelector('.description-edit');
+
+  let formIsValid = false;
+
+  if (title.value === '' && description.value === '') {
+    formIsValid = false;
+    description.parentNode.insertAdjacentHTML('beforeend', 
+    `
+    <div class="invalid-fb">
+    Please enter changes to either the title or description.
+    </div>
+    `);
+    return;
+  } else {
+    formIsValid = true;
+  }
+
+  if (formIsValid) {
+    console.log('Your edits are good to go!');
+
+    const updatedPost = {};
+
+    if (title.value !== '') {
+      updatedPost.title = title.value;
+    }
+    if (description.value !== '') {
+      updatedPost.description = description.value;
+    }
+
+    fetch(`/api/v1/posts/${postId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedPost),
+    })
+      .then(() => {
+        postContainer.innerHTML = '';
+        fetchUser();
+        console.log('tada!');
+      })
+      .catch(err => console.log(err))
+  }
+} 
 
 // --- CALLED FUNCTIONS
 fetchUser();
