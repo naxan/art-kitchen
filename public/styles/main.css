@@ -184,22 +184,21 @@ margin-bottom: 12px;
   background-size: contain;
   
 }
-.alert {
-  max-width: 400px;
-}
-.alert  p {
-  float:right;
-  color: #333;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 22px;
-
-}
-.alert h6 {
-  float: left;
-}
 #ingredients {
+  max-width: 450px; 
   padding: 40px;
 }
+
+#ingredients  p {
+ margin-left: 80px;
+  color: #333;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 26px;
+  margin-bottom: -8px;
+  margin-top: -5px;
+}
+
+
 /*
  * Footer
  */

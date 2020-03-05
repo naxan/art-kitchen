@@ -1,6 +1,6 @@
 console.log("kitchen time!")
 
-const fauna = [
+const faunaList = [
     "Aardvark","Albatross","Alligator","Alpaca","Ant","Anteater","Antelope","Ape",
     "Armadillo","Donkey", "Baboon","Badger", "Barracuda","Bat","Bear","Beaver",
     "Bee","Bison","Boar","Buffalo","Butterfly","Camel","Capybara","Caribou",
@@ -91,7 +91,7 @@ const fauna = [
     "Zebra" 
 ];
 
-const flora = [
+const floraList = [
     "Mushroom",
     "Willow tree",
     "Cactus",
@@ -108,7 +108,7 @@ const flora = [
     "Seaweed",
     "Grass"
 ];
-const mat = [
+const matList = [
     "Diamond",
     "Quartz",
     "Oak",
@@ -137,7 +137,7 @@ const mat = [
     "Ribbons",
     "Hologram"
 ];
-const mach = [
+const machList = [
     "Car",
     "Plane",
     "Computer",
@@ -163,4 +163,20 @@ const mach = [
     "TV"
 ];
 
+const fauna = document.getElementById('fauna');
+const flora = document.getElementById('flora');
+const mat = document.getElementById('mat');
+const mach = document.getElementById('mach');
+const roll = document.getElementById('roll')
+
+function randomWord(arr) {
+   return arr[Math.floor(Math.random() * arr.length)]
+};
+
+roll.addEventListener('click', () => {
+    fauna.textContent = randomWord(faunaList);
+    flora.textContent = randomWord(floraList);
+    mat.textContent = randomWord(matList);
+    mach.textContent = randomWord(machList);
+})
 
