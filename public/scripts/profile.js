@@ -6,8 +6,6 @@ const username = document.getElementById('username');
 const bio = document.getElementById('bio');
 const postContainer = document.getElementById('posts');
 
-const deleteBtns = document.querySelectorAll('.delete-btn');
-
 // --- Functions
 
 // Populate page with user info and user posts
@@ -40,9 +38,15 @@ function render(user) {
 
     // set up event listeners on templated buttons
     const editBtns = document.querySelectorAll('.edit-btn');
-    editBtns.forEach(editBtn => {
-      editBtn.addEventListener('click', handlePostEdit);
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+
+    editBtns.forEach(btn => {
+      btn.addEventListener('click', handlePostEdit);
     });
+
+    deleteBtns.forEach(btn => {
+      btn.addEventListener('click', handleDeleteClick);
+    })
 }
 
 function postTemplate(post) {
@@ -107,32 +111,7 @@ function postTemplate(post) {
     }
 }
 
-// Edit and Delete posts
-
-// let postId = target.closest('.card').id
-
-// when edit button is clicked,
-// post content changes to form
-// target.closest('.card').innerHTML = formTemplate
-// make function updatePost
-// formIsValid = false;
-// take id's of modal inputs
-// if both values are empty strings,
-// formIsValid = false, parentnode insert adjacent html of an error message, return
-// else,
-// formIsValid = true;
-// if formIsValid
-// const updatedPost = {title: title.value, description: description.value}
-// fetch ('/api/v1/posts/${postId}', {
-  // method: 'PUT',
-  // etc etc
-// })
-// then close modal
-// then remove all posts from DOM
-// then call fetchUser()
-
-// fetch update route
-// body set equal to updatedPost = {title: title.value, description: description.value}
+// --------------------- Edit and Delete posts
 
 function handlePostEdit(e) {
   const thisCard = event.target.closest('.card');
@@ -161,9 +140,15 @@ function handlePostEdit(e) {
   cancelBtn.addEventListener('click', () => {
     thisCard.innerHTML = beforeChanges;
     const editBtns = document.querySelectorAll('.edit-btn');
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+
     editBtns.forEach(editBtn => {
       editBtn.addEventListener('click', handlePostEdit);
     });
+    deleteBtns.forEach(btn => {
+      btn.addEventListener('click', handleDeleteClick);
+    })
+
   });
 
   // Form Submit
@@ -171,6 +156,7 @@ function handlePostEdit(e) {
   submitBtn.addEventListener('click', handleEditSubmit);
 }
 
+// -------------------------------------
 function handleEditSubmit(e) {
   event.preventDefault();
 
@@ -221,6 +207,50 @@ function handleEditSubmit(e) {
       .catch(err => console.log(err))
   }
 } 
+
+// -------------------------------
+function handleDeleteClick(e) {
+  const thisCard = event.target.closest('.card');
+  const postId = thisCard.id;
+  const originalCard = thisCard.innerHTML;
+
+  thisCard.innerHTML = `
+  <h5 class="text-danger">Are you sure you would like to delete this post?</h5>
+  <button class="btn bg-primary no-btn">No</button>
+  <button class="btn text-danger yes-btn">Yes</button>
+  `;
+
+  thisCard.querySelector('.no-btn').addEventListener('click', () => {
+    thisCard.innerHTML = originalCard;
+    const editBtns = document.querySelectorAll('.edit-btn');
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+
+    editBtns.forEach(btn => {
+      btn.addEventListener('click', handlePostEdit);
+    });
+
+    deleteBtns.forEach(btn => {
+      btn.addEventListener('click', handleDeleteClick);
+    })
+  });
+  thisCard.querySelector('.yes-btn').addEventListener('click', handlePostDestroy);
+}
+
+function handlePostDestroy(e) {
+  const thisCard = event.target.closest('.card');
+  const postId = thisCard.id;
+
+  console.log('Deleting...')
+  fetch(`/api/v1/posts/${postId}`, {
+    method: 'DELETE'
+  })
+    .then(() => {
+      postContainer.innerHTML = '';
+      fetchUser();
+      console.log('Post deleted!');
+    })
+}
+
 
 // --- CALLED FUNCTIONS
 fetchUser();
