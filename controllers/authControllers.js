@@ -97,7 +97,7 @@ const verify = (req, res) => {
         return res.json({
             status: 200,
             message: 'Authorized',
-            user: req.body.currentUser,
+            user: req.session.currentUser,
         });
     } else {
         return res.json({

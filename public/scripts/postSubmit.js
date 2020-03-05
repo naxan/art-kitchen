@@ -1,23 +1,20 @@
-console.log('sanity check!!');
-
 const postForm = document.getElementById('postForm');
 
-// SAMPLE USER DATA FOR POSTS
+// Gets id of logged in user
 let userId;
 
-function getUserID() {
-    fetch('/api/v1/users')
-    .then(buffer => buffer.json())
-    .then(data => {
-        userId = data[0]._id;
-    })
-    .catch(err => console.log(err))
+function getUserId() {
+    fetch(`/api/v1/verify`)
+        .then(buffer => buffer.json())
+        .then(userSession => {
+            userId = userSession.user._id;
+        })
+        .catch(err => console.log(err))
 }
 
-getUserID();
-// END SAMPLE
+getUserId();
 
-//postForm.addEventListener('post', handlePostSubmit)
+// Create post on submit
 
 function handlePostSubmit(e) {
     event.preventDefault();
@@ -56,7 +53,6 @@ function handlePostSubmit(e) {
 
     if (imageUrl.value === '' && body.value === '') {
         formIsValid = false;
-        console.log('Please add either an image or your creative writing!')
         body.parentNode.insertAdjacentHTML('beforeend', 
         `
         <div class="invalid-fb content-fb">
@@ -82,7 +78,6 @@ function handlePostSubmit(e) {
                 mach
             ]
         };
-        console.log(newPost);
 
         fetch(`/api/v1/users/${userId}/posts`, {
             method: 'POST',

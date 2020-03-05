@@ -4,6 +4,7 @@ let signupSubmit = document.getElementById("signup-submit")
 let ahaa = document.getElementById("ahaa")
 
 const form = document.getElementById('userForm');
+console.log(form);
 
 loginBtn.addEventListener("click", () => {
     signupSubmit.textContent = "Log in!"
