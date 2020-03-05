@@ -27,6 +27,12 @@ function handlePostSubmit(e) {
     const body = document.getElementById('body');
     const description = document.getElementById('description');
 
+    // tags text
+    const fauna = document.getElementById('fauna').innerText;
+    const flora = document.getElementById('flora').innerText;
+    const mat = document.getElementById('mat').innerText;
+    const mach = document.getElementById('mach').innerText;
+
     const titleFeedback = document.querySelector('.title-fb');
     const contentFeedback = document.querySelector('.content-fb');
 
@@ -69,6 +75,12 @@ function handlePostSubmit(e) {
             imageUrl: imageUrl.value,
             body: body.value,
             description: description.value,
+            tags: [
+                fauna,
+                flora,
+                mat,
+                mach
+            ]
         };
         console.log(newPost);
 
