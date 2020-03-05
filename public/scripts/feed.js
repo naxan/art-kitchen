@@ -14,11 +14,12 @@ function fetchPosts() {
 }
 
 function render(posts) {
-    const postTemplates = posts.map((post) => {
-        return postTemplate(post);
-    });
+  let postTemplates = ``;
+  for (let i = posts.length - 1; i > -1; i--) {
+    postTemplates += postTemplate(posts[i]);
+  }
 
-    postContainer.insertAdjacentHTML('beforeend', postTemplates);
+    postContainer.insertAdjacentHTML('afterbegin', postTemplates);
 }
 
 function postTemplate(post) {
