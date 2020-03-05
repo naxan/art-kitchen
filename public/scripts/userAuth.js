@@ -26,9 +26,9 @@ function handleSignupSubmit(e) {
     // remove feedback
     document.querySelectorAll('.invalid-feedback').forEach(feedback => feedback.remove());
 
-    const formInputs = [...form.elements];
+    const formInputs = Array.from(form.elements);
     formInputs.forEach((input) => {
-        input.classList.remove('.is-invalid');
+        input.classList.remove('is-invalid');
         if (input.type !== 'submit' && input.value === '') {
             noErrorsFoundYet = false;
             input.classList.add('is-invalid');
@@ -70,8 +70,43 @@ function handleLoginSubmit(e) {
     event.preventDefault();
 
     document.querySelectorAll('.invalid-feedback').forEach((feedback) => feedback.remove());
+    const formInputs = Array.from(form.elements);
+    formInputs.forEach((input) => {
+        input.classList.remove('is-invalid');
+        if (input.type !== 'submit' && input.value === '') {
+            noErrorsFoundYet = false;
+            input.classList.add('is-invalid');
+            input.insertAdjacentHTML('afterend', `
+            <div class="invalid-feedback">
+            Please enter your ${input.name}.
+            </div>
+            `)
+        }
 
-    
+        if (noErrorsFoundYet) {
+            userData[input.name] = input.value;
+        }
+    });
+
+    console.log(userData);
+
+    if (noErrorsFoundYet) {
+        console.log('checking log in...');
+        fetch('/api/v1/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'credentials': 'include',
+            },
+            body: JSON.stringify(userData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 200) {
+                    window.location.pathname = '/profile'
+                }
+            })
+    }
 }
 
 // event listeners

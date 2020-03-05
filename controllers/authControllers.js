@@ -67,7 +67,7 @@ const login = (req, res) => {
 
                 req.session.currentUser = currentUser;
                 return res.status(200).json({
-                    status: 400,
+                    status: 200,
                     user: currentUser,
                 });
             } else {
