@@ -49,12 +49,13 @@ body {
   display: flex;
   color: rgb(255, 255, 255);
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 0 5rem rgba(16, 16, 16, 0.5);
+  
 }
 #home {
   background-image: url("/images/calum-lewis-rkT_TG5NKF8-unsplash.jpg");
   background-blend-mode: overlay;
   background-size: cover;
+  box-shadow: inset 0 0 5rem rgba(16, 16, 16, 0.5);
 }
 .cover-container {
   max-width: 42em;
@@ -155,21 +156,26 @@ margin-bottom: 12px;
  }
 
 #image-url {
-  width: 300px;
-  height: 300px;
+  width: 375px;
+  height: 375px;
 }
 
 .art-post, .text-post{
-  max-width: 300px;
-  min-width: 300px;
+  max-width: 375px;
+  min-width: 375px;
 }
 .description {
   font-size: 14px;
+  margin-bottom: 50px;
 }
 .tag {
   font-size: 14px;
-  margin: 0 auto;
-  
+ 
+}
+.tags {
+  position: absolute;
+  bottom: 5px;
+  background-color: azure;
 }
 
 .post-menu {}
@@ -198,6 +204,9 @@ margin-bottom: 12px;
   margin-top: -5px;
 }
 
+p {
+  text-shadow: none;
+}
 
 /*
  * Footer
