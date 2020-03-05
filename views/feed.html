@@ -13,7 +13,7 @@
         <header class="masthead mb-auto">
           <div class="inner">
             <h3 class="masthead-brand">ArtKitchen</h3>
-            <button type="button" class="btn btn-danger">Let's Get Cooking!</button>
+            <a class="nav-item" href="/kitchen"><button type="button" class="btn btn-danger pt-0 pb-0">Let's Get Cooking!</button></a>
             <nav class="nav nav-masthead justify-content-center">
               <a class="nav-link" href="/">Home</a>
               <a class="nav-link active" href="/feed">Feed</a>
@@ -24,6 +24,19 @@
     
         <div class="row" id="posts"> 
         <div class="card mb-1 ml-1 art-post">
+            <!-- POST MENU -->
+            <div class="btn-group post-menu">
+                <button type="button" 
+                  class="btn btn-secondary dropdown-toggle" 
+                  data-toggle="dropdown" aria-haspopup="true" 
+                  aria-expanded="false">
+                </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button" for="edit">Edit</button>
+                    <button class="dropdown-item" type="button" for="delete">Delete</button>
+                  </div>
+                </div>
+                <!-- END POST MENU -->
             <img src="http://placebear.com/600/600" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title title">Untitled</h5>
@@ -38,6 +51,19 @@
         </div>
 
         <div class="card mb-1 ml-1 text-post">
+            <!-- POST MENU -->
+            <div class="btn-group post-menu">
+                <button type="button" 
+                  class="btn btn-secondary dropdown-toggle" 
+                  data-toggle="dropdown" aria-haspopup="true" 
+                  aria-expanded="false">
+                </button>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button" for="edit">Edit</button>
+                    <button class="dropdown-item" type="button" for="delete">Delete</button>
+                  </div>
+                </div>
+                <!-- END POST MENU -->
             <div class="card-body">
             <h5 class="card-title title" >Untitled</h5>
             <p class="card-text body">Lorem ipsum dolor, sit amet consectetur 
