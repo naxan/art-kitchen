@@ -167,9 +167,9 @@ margin-bottom: 12px;
   font-size: 14px;
 }
 .tag {
-    font-size: 14px;
-    margin: 0 auto;
-    
+  font-size: 14px;
+  margin: 0 auto;
+  
 }
 
 .post-menu {}
@@ -179,11 +179,27 @@ margin-bottom: 12px;
   */
 #generator {
    background-image: url("/images/ingredients-bg.png");
-   width: 400px;
-   height: 400px;
+   width: 500px;
+   height: 500px;
   background-size: contain;
+  
 }
+.alert {
+  max-width: 400px;
+}
+.alert  p {
+  float:right;
+  color: #333;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 22px;
 
+}
+.alert h6 {
+  float: left;
+}
+#ingredients {
+  padding: 40px;
+}
 /*
  * Footer
  */
