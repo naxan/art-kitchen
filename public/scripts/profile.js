@@ -8,23 +8,50 @@ const postContainer = document.getElementById('posts');
 // --- POPULATE USER'S INFO AND POSTS
 // --------------------------------------------
 
+// let userId;
+// fetch verify path
+// result includes user: { _id, username }
+// buffer => buffer.json()
+// userSession => userId = userSession._id
+// use userId to fetch the correct user
+// fetch(`/api/v1/users/${userId}`)
+// .then(buffer => buffer.json())
+// .then(user => render(user))
+
 // Fetch User Info
 function fetchUser() {
-    fetch('/api/v1/users')
-        .then((buffer) => buffer.json())
-        .then((data) => {
-            render(data[0]);
+    let userId;
+
+    fetch('/api/v1/verify')
+      .then(buffer => buffer.json())
+      .then(userSession => {
+
+        userId = userSession.user._id;
+
+        fetch(`/api/v1/users/${userId}`)
+        .then(buffer => buffer.json())
+        .then(user => {
+            render(user);
         })
         .catch(err => console.log(err))
+
+      })
+      .catch(err => console.log(err))
 };
 
 function render(user) {
     // render user's pro img and details
+    // only show profile image if the user has one
     if (user.profileImage) {
         profileImage.setAttribute('src', user.profileImage);
     }
     username.innerText = user.username;
-    bio.innerText = user.bio;
+    // only show user bio if the user has one
+    if (user.bio) {
+      bio.innerText = user.bio;
+    } else {
+      bio.innerText = 'Write something about yourself!'
+    }
 
     // render user's posts
     let postTemplates = ``;
