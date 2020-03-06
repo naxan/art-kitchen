@@ -12,6 +12,12 @@ loginBtn.addEventListener("click", () => {
 
     form.removeEventListener('submit', handleSignupSubmit);
     form.addEventListener('submit', handleLoginSubmit);
+
+    document.querySelectorAll('.invalid-feedback').forEach(feedback => feedback.remove());
+    const formInputs = Array.from(form.elements);
+    formInputs.forEach((input) => {
+        input.classList.remove('is-invalid');
+    })
 })
 
 // functions
@@ -97,8 +103,21 @@ function handleLoginSubmit(e) {
             .then(data => {
                 if (data.status === 200) {
                     window.location.pathname = '/profile'
+                } else if (data.status === 400) {
+                    const formInputs = Array.from(form.elements);
+                    formInputs.forEach((input) => {
+                        input.classList.add('is-invalid');
+                    });
+
+                    const usernameInput = document.getElementById('username-input');
+                    usernameInput.insertAdjacentHTML('afterend', `
+                    <div class="invalid-feedback text-danger">
+                    Invalid credentials.
+                    </div>
+                    `);
                 }
             })
+            .catch(err => console.log(err))
     }
 }
 
