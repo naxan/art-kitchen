@@ -28,6 +28,7 @@ function postTemplate(post) {
         <div class="card mb-1 ml-1 art-post">
         <img src="${post.imageUrl}" class="card-img-top" alt="${post.title}">
         <div class="card-body">
+        <h6 class="text-left">${post.author.username}</h6>
           <h5 class="card-title title">${post.title}</h5>
           <p class="card-text description">${post.description}</p>
           <div class="row mb-0 tags"> 
@@ -43,6 +44,7 @@ function postTemplate(post) {
         return `
         <div class="card mb-1 ml-1 text-post">
         <div class="card-body">
+        <h6 class="text-left">${post.author.username}</h6>
           <h5 class="card-title title" >${post.title}</h5>
           <p class="card-text body">${post.body}</p>
             <p class="text-muted">About this piece:</p>
