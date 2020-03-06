@@ -122,6 +122,7 @@ body {
 /*
  * Profile
  */
+
 #user-profile {
   width: 250px;
   
@@ -131,6 +132,12 @@ body {
   margin-left: 35px;
   margin-bottom: 30px;
 }
+#profile-image {
+  height: 150px;
+  width: 150px;
+  background-size: cover;
+}
+
 main {
   margin: 40px;
 
@@ -212,9 +219,15 @@ margin-bottom: 12px;
   margin-bottom: -8px;
   margin-top: -5px;
 }
-
+#form-toggle {
+ display: block;
+ margin: 10px;
+}
 p {
   text-shadow: none;
+}
+#textform {
+  display: none;
 }
 
 /*
