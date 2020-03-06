@@ -1,5 +1,3 @@
-console.log("kitchen time!")
-
 const faunaList = [
     "Aardvark","Albatross","Alligator","Alpaca","Ant","Anteater","Antelope","Ape",
     "Armadillo","Donkey", "Baboon","Badger", "Barracuda","Bat","Bear","Beaver",
@@ -183,3 +181,23 @@ function displayWords() {
 };
 
 displayWords();
+
+
+
+// Post From Tabs
+
+const imgtab = document.getElementById("imgtab");
+const texttab = document.getElementById("texttab");
+const bodyTextBox = document.getElementById("textform");
+const imgUrlBox = document.getElementById("imgform");
+
+
+imgtab.addEventListener('click', () => {
+    bodyTextBox.style.display = "none";
+    imgUrlBox.style.display = "block";
+});
+
+texttab.addEventListener('click', () => {
+    imgUrlBox.style.display = "none";
+    bodyTextBox.style.display = "block";
+});

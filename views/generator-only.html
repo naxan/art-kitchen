@@ -4,51 +4,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css">
-  <script defer src="/scripts/userAuth.js"></script>
+  <script defer src="/scripts/generator.js"></script>
+  <script defer src="/scripts/postSubmit.js"></script>
   <title>Art Kitchen</title>
 </head>
 
-<body class="text-center" id="home">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+<body class="text-center">
+  <div class="container-lg d-flex p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">ArtKitchen</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          
+          <a class="nav-link" href="/">Log in</a>
         </nav>
       </div>
     </header>
 
-    <main role="main" class="inner cover">
-      <br><br><br>
-      <h1 class="cover-heading">Feed your creativity.</h1>
-      <h4 class="lead">We'll give you the ingredients for a tasty new creation!</h4>
-      <h6 class="small">Use our word generator to help break through your creative block.</h6>
-      <p class="lead">
-        <form id="userForm">
-          <div class="form-row">
-            <div class="col">
-              <input type="username" name="username" class="form-control new" placeholder="username">
+    <main class="row">
+      <!-- GENERATOR -->
+      <div class="col-lg">
+        <h2>Here are your ingredients!</h2>
+        <h5>Draw or write something delicious.</h5>
+        <div class="pt-5 mx-auto" id="generator">
+          <div class="mt-3" id="ingredients">
+
+            <div class="row alert alert-danger">
+              <h6>Fauna</h6>
+              <p id="fauna"> </p>
             </div>
-            <div class="col">
-              <input type="password" name="password" class="form-control new" placeholder="password">
+
+            <div class="row alert alert-success">
+              <h6>Flora</h6>
+              <p id="flora"> </p>
             </div>
-            <button type="submit" class="ml-1 btn btn-md btn-secondary" id="signup-submit">Sign Up!</button>
+
+            <div class="row alert alert-warning">
+              <h6>Material</h6>
+              <p id="mat"> </p>
+            </div>
+
+            <div class="row alert alert-info">
+              <h6>Machine</h6>
+              <p id="mach"> </p>
+            </div>
+
           </div>
-        </form>
-        <br>
-
-
-        <section class="row">
-          <div class="col" id="ahaa">
-            <p class="">Already have an account?</p>
-            <a href="#" class="btn btn-sm btn-secondary" id="login">Log in</a>
-          </div>
-        </section>
-
-
+          <button class="mr-5 float-right btn-sm btn-dark" id="roll">New Ingredients</button>
+        </div>
+        </div>
     </main>
+
+
 
     <footer class="mastfoot mt-auto">
       <div class="inner">

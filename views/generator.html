@@ -19,8 +19,7 @@
     <header class="masthead mb-auto">
       <div class="inner">
         <h3 class="masthead-brand">ArtKitchen</h3>
-        <a class="nav-item" href="/kitchen"><button type="button" class="btn btn-danger pt-0 pb-0">Let's Get
-            Cooking!</button></a>
+        <div class="nav-item btn hidden disable">              </div>
         <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link" href="/feed">Feed</a>
           <a class="nav-link" href="/profile">Profile</a>
@@ -33,6 +32,7 @@
       <!-- GENERATOR -->
       <div class="col-lg">
         <h2>Here are your ingredients!</h2>
+        <h5>Draw or write something delicious.</h5>
         <div class="pt-5 mx-auto" id="generator">
           <div class="mt-3" id="ingredients">
 
@@ -61,24 +61,34 @@
         </div>
       </div>
 
-      <!-- POST FORM -->
+      
       <div class="col-lg">
 
-        <h2>Don't forget to share what you've made!</h2>
+        <h3>Don't forget to share what you've made!</h3>
+      
+        <div id="form-toggle" class="col btn-toolbar btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="imgtab" checked>New Image Post
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="texttab"> New Text Post
+          </label>
+        </div>
+      
         <form id="postForm">
           <div class="form-group">
             <label for="title">Title <span class="require">*</span></label>
             <input id="title" type="text" class="form-control" name="title" />
           </div>
 
-          <div class="form-group has-error">
+          <div id="imgform" class="form-group has-error">
             <label for="img-url">Image Link <span class=""></span> <small>(Please link to your image
-                directly))</small></label>
+                directly)</small></label>
             <input id="img-url" type="text" class="form-control" name="slug" />
 
           </div>
 
-          <div class="form-group">
+          <div id="textform" class="form-group">
             <label for="body">Body</label>
             <textarea id="body" rows="5" class="form-control" name="body"
               placeholder="Insert your writing here"></textarea>
