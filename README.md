@@ -53,7 +53,7 @@ Ever been stopped by art block or an empty canvas? Our web app, Art Kitchen, gen
 ### Screenshots
 
 #### Home Page
-<img src=".public/images/screenshots/home-page.png">
+<img src="./public/images/screenshots/home-page.png">
 
 #### Generator
 <img src="./public/images/screenshots/ingredients-page.png"> 
