@@ -48,21 +48,45 @@ function handleSignupSubmit(e) {
         }
     });
 
-    // submiting data to server if user is valid
+    // checking if username is already taken
     if (noErrorsFoundYet) {
-        fetch('/api/v1/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        })
-        .then(res => res.json())
-        .then(data => {
-            window.location = '/';
-            alert('Account creation success! Now please log in to continue')
-        })
-        .catch(err => console.log(err));
+        fetch('/api/v1/users')
+            .then(buffer => buffer.json())
+            .then(data => {
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].username === userData.username) {
+                        const usernameInput = document.getElementById('username-input');
+                        usernameInput.classList.add('is-invalid');
+    
+                        usernameInput.insertAdjacentHTML('afterend', `
+                        <div class="invalid-feedback text-danger">
+                        This username is already taken.
+                        </div>
+                        `);
+
+                        noErrorsFoundYet = false;
+                        break;
+                    }
+                }
+            })
+            .then(() => {
+                // submiting data to server if user is valid
+                if (noErrorsFoundYet) {
+                    fetch('/api/v1/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        window.location = '/';
+                        alert('Account creation success! Now please log in to continue')
+                    })
+                    .catch(err => console.log(err));
+                }
+            })
     }
 }
 

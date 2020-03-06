@@ -1,3 +1,8 @@
+// Contents
+// 1. POPULATE USER'S INFO AND POSTS
+// 2. EDIT AND DELETE POSTS
+// 3. EDIT USER
+
 // --- CACHED ELEMENTS
 const profileImage = document.getElementById('profile-image');
 const username = document.getElementById('username');
@@ -389,11 +394,9 @@ function handleUserEditSubmit() {
 
 }
 
-userEdit.addEventListener('click', handleUserEdit);
-
 
 // --- EVENT LISTENERS
-
+userEdit.addEventListener('click', handleUserEdit);
 
 // --- CALLED FUNCTIONS
 fetchUser();
