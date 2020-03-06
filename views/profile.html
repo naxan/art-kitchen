@@ -28,27 +28,35 @@
     </header>
 
     <main role="main" class="row">
+
       <aside class="card" id="user-profile">
-        <div class="btn-group post-menu">
+        <div class="row no-gutters"> 
+          <div class="btn-group post-menu">
           <button id="profile-edit" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
           </button>
           <div class="dropdown-menu">
             <button class="dropdown-item" type="button" for="edit" id="user-edit">Edit</button>
           </div>
-        </div>
-        <img src="http://placebear.com/150/150" class="rounded mx-auto d-block" id="profile-image" alt="...">
-        <div class="card-body">
-          
-          <h5 class="card-title" id="username"></h5>
-          <p class="card-text" id="bio">
+          </div>
 
-          </p>
+          <div class="col-md-3"> 
+            <img src="http://placebear.com/150/150" class="rounded mx-auto d-block" id="profile-image" alt="...">
+          </div>
+
+          <div class="col-md-9"> 
+            <div class="card-body">
+              
+              <h5 class="card-title" id="username"></h5>
+              <p class="card-text" id="bio"></p>
+            </div>
+          </div>
+
         </div>
       </aside>
 
-      <section class="col-8">
-        <div class="row" id="posts">
+      <section class="">
+        <div class="row justify-content-md-center" id="posts">
 
         </div>
       </section>

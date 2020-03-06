@@ -122,7 +122,6 @@ function postTemplate(post) {
         <div class="card-body">
           <h5 class="card-title title">${post.title}</h5>
           <p class="card-text body">${post.body}</p>
-            <p class="text-muted">About this piece:</p>
           <p class="text-muted description">${post.description}</p>
           <div class="row mb-0 tags"> 
               <button class="tag btn fauna-tag">${post.tags[0]}</button>
