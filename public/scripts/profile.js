@@ -4,23 +4,17 @@ const username = document.getElementById('username');
 const bio = document.getElementById('bio');
 const postContainer = document.getElementById('posts');
 
+const userCard = document.getElementById('user-profile');
+let userEdit = document.getElementById('user-edit');
+
 // --------------------------------------------
 // --- POPULATE USER'S INFO AND POSTS
 // --------------------------------------------
 
-// let userId;
-// fetch verify path
-// result includes user: { _id, username }
-// buffer => buffer.json()
-// userSession => userId = userSession._id
-// use userId to fetch the correct user
-// fetch(`/api/v1/users/${userId}`)
-// .then(buffer => buffer.json())
-// .then(user => render(user))
+let userId;
 
 // Fetch User Info
 function fetchUser() {
-    let userId;
 
     fetch('/api/v1/verify')
       .then(buffer => buffer.json())
@@ -279,6 +273,167 @@ function handlePostDestroy(e) {
       fetchUser();
     })
 }
+
+// --------------------------------------------
+// --- EDIT USER
+// --------------------------------------------
+
+// userEdit on click function
+// const currentInfo = userCard.innerHTML;
+// create template
+// const form template = 
+/* <form>
+<div class="form-group">
+  <label>Profile Picture URL</label>
+  <input type="text" class="form-control" id="propic-edit" aria-describedby="title">
+</div>
+<div class="form-group">
+  <label>Bio</label>
+  <input type="text" class="form-control" id="bio-edit">
+</div>
+<button type="submit" class="btn btn-primary submit-btn">Submit Changes</button>
+<button class="btn cancel-btn">Cancel</button>
+</form> */
+// userCard.innerHTML = form template
+// cancel button functionality
+// clicking cancel returns html to currentInfo and
+// calls event listener to edit button again
+// add submit button click event listener
+
+// submit button on click function
+// 
+
+function handleUserEdit() {
+  const currentInfo = userCard.innerHTML;
+
+  const formTemplate = `
+  <form>
+  <div class="form-group">
+    <label>Profile Picture URL</label>
+    <input type="text" class="form-control" id="propic-edit" aria-describedby="title">
+  </div>
+  <div class="form-group">
+    <label>Bio</label>
+    <input type="text" class="form-control" id="bio-edit">
+  </div>
+  <button type="submit" class="btn btn-primary" id="submit-btn">Submit Changes</button>
+  <button class="btn" id="cancel-btn">Cancel</button>
+  </form>
+  `
+
+  userCard.innerHTML = formTemplate;
+
+  // CANCEL BUTTON
+  const cancelBtn = document.getElementById('cancel-btn');
+  cancelBtn.addEventListener('click', () => {
+    userCard.innerHTML = currentInfo;
+    userEdit = document.getElementById('user-edit');
+    userEdit.addEventListener('click', handleUserEdit);
+  })
+
+  const submitBtn = document.getElementById('submit-btn');
+  submitBtn.addEventListener('click', handleUserEditSubmit);
+}
+
+function handleUserEditSubmit() {
+  event.preventDefault();
+
+  const profileImage = document.getElementById('propic-edit');
+  const bio = document.getElementById('bio-edit');
+
+  let formIsValid = false;
+
+  if (profileImage.value === '' && bio.value === '') {
+    formIsValid = false;
+    userCard.insertAdjacentHTML('beforeend', `
+    <div class="invalid-fb text-danger">
+    Please enter changes to either the profile picture or bio.
+    </div>
+    `);
+    return;
+  } else {
+    formIsValid = true;
+  }
+
+  if (formIsValid) {
+    const updatedUser = {};
+
+    if (profileImage.value !== '') {
+      updatedUser.profileImage = profileImage.value;
+    }
+    if (bio.value !== '') {
+      updatedUser.bio = bio.value; 
+    }
+
+    console.log(userId);
+
+    fetch(`/api/v1/users/${userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedUser),
+    })
+      .then(() => {
+        location.reload();
+        console.log('huzzah');
+      })
+  }
+
+}
+
+userEdit.addEventListener('click', handleUserEdit);
+
+// function handleEditSubmit(e) {
+//   event.preventDefault();
+
+//   const thisCard = event.target.closest('.card');
+//   const postId = thisCard.id;
+//   const title = thisCard.querySelector('.title-edit');
+//   const description = thisCard.querySelector('.description-edit');
+
+//   let formIsValid = false;
+
+//   if (title.value === '' && description.value === '') {
+//     formIsValid = false;
+//     description.parentNode.insertAdjacentHTML('beforeend', 
+//     `
+//     <div class="invalid-fb">
+//     Please enter changes to either the title or description.
+//     </div>
+//     `);
+//     return;
+//   } else {
+//     formIsValid = true;
+//   }
+
+//   if (formIsValid) {
+//     const updatedPost = {};
+
+//     if (title.value !== '') {
+//       updatedPost.title = title.value;
+//     }
+//     if (description.value !== '') {
+//       updatedPost.description = description.value;
+//     }
+
+//     fetch(`/api/v1/posts/${postId}`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(updatedPost),
+//     })
+//       .then(() => {
+//         postContainer.innerHTML = '';
+//         fetchUser();
+//       })
+//       .catch(err => console.log(err))
+//   }
+// } 
+
+
+// --- EVENT LISTENERS
 
 
 // --- CALLED FUNCTIONS
