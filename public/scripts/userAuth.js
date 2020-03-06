@@ -81,12 +81,7 @@ function handleSignupSubmit(e) {
                     })
                     .then(res => res.json())
                     .then(() => {
-                        formInputs.forEach(input => input.value = '');
-                        form.insertAdjacentHTML('afterend', `
-                        <div>
-                        Your account has been created! Please log in to continue.
-                        </div>
-                        `);
+                        handleLoginSubmit();
                     })
                     .catch(err => console.log(err));
                 }
@@ -97,7 +92,9 @@ function handleSignupSubmit(e) {
 function handleLoginSubmit(e) {
     let noErrorsFoundYet = true;
     const userData = {};
-    event.preventDefault();
+    if (e) {
+        event.preventDefault();
+    }
 
     document.querySelectorAll('.invalid-feedback').forEach((feedback) => feedback.remove());
     const formInputs = Array.from(form.elements);
