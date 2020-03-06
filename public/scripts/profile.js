@@ -89,8 +89,8 @@ function postTemplate(post) {
           <h5 class="card-title title">${post.title}</h5>
           <p class="card-text description">${post.description}</p>
           <div class="row mb-0 tags"> 
-            <button class="tag btn flora-tag">${post.tags[0]}</button>
-            <button class="tag btn fauna-tag">${post.tags[1]}</button>
+            <button class="tag btn fauna-tag">${post.tags[0]}</button>
+            <button class="tag btn flora-tag">${post.tags[1]}</button>
             <button class="tag btn mat-tag">${post.tags[2]}</button>
             <button class="tag btn mach-tag">${post.tags[3]}</button>
           </div>
@@ -119,8 +119,8 @@ function postTemplate(post) {
             <p class="text-muted">About this piece:</p>
           <p class="text-muted description">${post.description}</p>
           <div class="row mb-0 tags"> 
-              <button class="tag btn flora-tag">${post.tags[0]}</button>
-              <button class="tag btn fauna-tag">${post.tags[1]}</button>
+              <button class="tag btn fauna-tag">${post.tags[0]}</button>
+              <button class="tag btn flora-tag">${post.tags[1]}</button>
               <button class="tag btn mat-tag">${post.tags[2]}</button>
               <button class="tag btn mach-tag">${post.tags[3]}</button>
           </div>
