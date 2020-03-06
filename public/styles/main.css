@@ -131,7 +131,6 @@ body {
   background-color: #fff;
   color: black;
   padding: 20px;
-  margin: auto;
   margin-left: 35px;
   margin-bottom: 30px;
 }
@@ -144,7 +143,9 @@ body {
   width: 150px;
   background-size: cover;
 }
-
+aside {
+  margin: 0 auto;
+}
 main {
   margin: 40px;
 
@@ -168,6 +169,7 @@ main {
 }
 .card {
   color: #333;
+  margin: 15px;
 }
 article {
 margin-bottom: 12px;
@@ -176,20 +178,29 @@ margin-bottom: 12px;
 color: rgb(86, 29, 29);
 position: absolute;
 top: 4px;
-right: 8px;
+left: 8px;
 font-size: 18px;
 opacity: 50%;
 text-shadow: none;
 }
-
+.title {
+  margin-top: 20px;
+  font-size: 18px;
+}
+.description {
+ margin-top: 50px;
+}
+.body {
+  
+}
 #image-url {
   width: 375px;
   height: 375px;
 }
 
 .art-post, .text-post{
-  max-width: 375px;
-  min-width: 375px;
+  max-width: 350px;
+  min-width: 350px;
 }
 .description {
   font-size: 14px;
@@ -269,10 +280,16 @@ p {
  * Feed
  */
 #feed-body {
-  background-image: url("/images/table.jpg");
+  background-image: url("/images/feed-bg.jpg");
   background-size: cover;
   background-attachment: fixed;
+  background-color: rgb(77, 77, 77);
+  background-blend-mode: overlay;
  
+}
+
+#posts {
+  /* width: 1200px; */
 }
 /*
  * Footer
