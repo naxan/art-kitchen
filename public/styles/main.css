@@ -12,7 +12,7 @@
           font-size: 3.5rem;
         }
       }
-    /*
+  /*
  * Globals
  */
 
@@ -42,20 +42,22 @@ html,
 body {
   height: 100%;
 }
-
 body {
   display: -ms-flexbox;
   display: flex;
-  background-color: rgb(72, 69, 69);
+  background-color: rgb(2, 38, 65);
   color: rgb(255, 255, 255);
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0.5);
+  
+  
   
 }
 #home {
   background-image: url("/images/calum-lewis-rkT_TG5NKF8-unsplash.jpg");
+  background-color: rgb(58, 55, 55);
   background-blend-mode: overlay;
   background-size: cover;
   box-shadow: inset 0 0 5rem rgba(16, 16, 16, 0.5);
+  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0.5);
 }
 .cover-container {
   max-width: 42em;
@@ -124,13 +126,18 @@ body {
  */
 
 #user-profile {
-  width: 250px;
-  
+  width: 800px;
+  text-align: left;
   background-color: #fff;
   color: black;
-  padding-top: 20px;
+  padding: 20px;
+  margin: auto;
   margin-left: 35px;
   margin-bottom: 30px;
+}
+#username{
+  font-size: 42px;
+  margin-top: -20px;
 }
 #profile-image {
   height: 150px;
@@ -162,14 +169,18 @@ main {
 .card {
   color: #333;
 }
-
-section  {
- margin-left: 20px;
- 
-}
- article {
+article {
 margin-bottom: 12px;
  }
+.author {
+color: rgb(86, 29, 29);
+position: absolute;
+top: 4px;
+right: 8px;
+font-size: 18px;
+opacity: 50%;
+text-shadow: none;
+}
 
 #image-url {
   width: 375px;
@@ -200,12 +211,12 @@ margin-bottom: 12px;
   background-color: rgb(191, 216, 247);
 }
 .tags {
+  width:375px;
   position: absolute;
   bottom: 5px;
-  display: flex;
-  flex-wrap: nowrap;
+  display: table;
+  left: 13px;
 }
-.post-menu {}
 
  /*
   * Kitchen
@@ -220,18 +231,20 @@ margin-bottom: 12px;
    width: 500px;
    height: 500px;
   background-size: contain;
+  margin-bottom: 100px;
 }
 #ingredients {
   max-width: 450px; 
-  padding: 40px;
+  padding: 30px;
   margin-left: 15px;
   mix-blend-mode: multiply;
+  
 }
 #ingredients  p {
  margin-left: 80px;
   color: #333;
   font-family: 'Permanent Marker', cursive;
-  font-size: 26px;
+  font-size: 30px;
   margin-bottom: -8px;
   margin-top: -5px;
   opacity: 100%;
@@ -239,14 +252,28 @@ margin-bottom: 12px;
 #form-toggle {
  display: block;
  margin: 10px;
+ margin-top: 50px;
 }
 p {
   text-shadow: none;
+}
+#postForm{
+  max-width: 500px;
+  margin: auto;
 }
 #textform {
   display: none;
 }
 
+/*
+ * Feed
+ */
+#feed-body {
+  background-image: url("/images/table.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+ 
+}
 /*
  * Footer
  */
