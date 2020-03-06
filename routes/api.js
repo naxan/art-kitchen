@@ -9,6 +9,7 @@ const ctrl = require('../controllers');
 router.get('/users', ctrl.users.index);
 router.get('/users/:id', ctrl.users.show);
 router.post('/users', ctrl.users.create);
+router.put('/users/:userId', ctrl.users.update);
 
 // POST
 
