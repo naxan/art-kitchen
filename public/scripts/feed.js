@@ -23,6 +23,7 @@ function render(posts) {
 }
 
 function postTemplate(post) {
+  // Art posts
     if (post.imageUrl) {
         return `
         <div class="card mb-1 ml-1 art-post">
@@ -32,15 +33,17 @@ function postTemplate(post) {
           <h5 class="card-title title">${post.title}</h5>
           <p class="card-text description">${post.description}</p>
           <div class="row mb-0 tags"> 
-            <button class="tag btn flora-tag">${post.tags[0]}</button>
-            <button class="tag btn fauna-tag">${post.tags[1]}</button>
+            <button class="tag btn fauna-tag">${post.tags[0]}</button>
+            <button class="tag btn flora-tag">${post.tags[1]}</button>
             <button class="tag btn mat-tag">${post.tags[2]}</button>
             <button class="tag btn mach-tag">${post.tags[3]}</button>
           </div>
         </div>
       </div>
         `;
-    } else {
+    } 
+    // Text posts
+    else {
         return `
         <div class="card mb-1 ml-1 text-post">
         <div class="card-body">
@@ -49,8 +52,8 @@ function postTemplate(post) {
           <p class="card-text body">${post.body}</p>
           <p class="text-muted description">${post.description}</p>
           <div class="row mb-0 tags"> 
-              <button class="tag btn flora-tag">${post.tags[0]}</button>
-              <button class="tag btn fauna-tag">${post.tags[1]}</button>
+              <button class="tag btn fauna-tag">${post.tags[0]}</button>
+              <button class="tag btn flora-tag">${post.tags[1]}</button>
               <button class="tag btn mat-tag">${post.tags[2]}</button>
               <button class="tag btn mach-tag">${post.tags[3]}</button>
           </div>
