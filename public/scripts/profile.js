@@ -138,7 +138,22 @@ function postTemplate(post) {
 
 function handlePostEdit(e) {
   const thisCard = event.target.closest('.card');
-  const beforeChanges = thisCard.innerHTML;
+  const beforeChanges = `
+  <div class="btn-group post-menu">
+  <button type="button" 
+    class="btn btn-secondary dropdown-toggle" 
+    data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false">
+  </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <button class="dropdown-item edit-btn" type="button" for="edit">Edit</button>
+      <button class="dropdown-item delete-btn" type="button" for="delete">Delete</button>
+    </div>
+  </div>
+  <div class="card-body">
+  ` 
+  + thisCard.querySelector('.card-body').innerHTML
+  + `</div>`;
 
   // Change post to form template
   const formTemplate = `
@@ -233,8 +248,25 @@ function handleEditSubmit(e) {
 
 function handleDeleteClick(e) {
   const thisCard = event.target.closest('.card');
-  const postId = thisCard.id;
-  const originalCard = thisCard.innerHTML;
+
+  const originalCard = `
+  <div class="btn-group post-menu">
+  <button type="button" 
+    class="btn btn-secondary dropdown-toggle" 
+    data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false">
+  </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <button class="dropdown-item edit-btn" type="button" for="edit">Edit</button>
+      <button class="dropdown-item delete-btn" type="button" for="delete">Delete</button>
+    </div>
+  </div>
+  <div class="card-body">
+  ` 
+  + thisCard.querySelector('.card-body').innerHTML
+  + `</div>`;
+
+  console.log(originalCard);
 
   thisCard.innerHTML = `
   <h5 class="text-danger">Are you sure you would like to delete this post?</h5>
@@ -277,31 +309,6 @@ function handlePostDestroy(e) {
 // --------------------------------------------
 // --- EDIT USER
 // --------------------------------------------
-
-// userEdit on click function
-// const currentInfo = userCard.innerHTML;
-// create template
-// const form template = 
-/* <form>
-<div class="form-group">
-  <label>Profile Picture URL</label>
-  <input type="text" class="form-control" id="propic-edit" aria-describedby="title">
-</div>
-<div class="form-group">
-  <label>Bio</label>
-  <input type="text" class="form-control" id="bio-edit">
-</div>
-<button type="submit" class="btn btn-primary submit-btn">Submit Changes</button>
-<button class="btn cancel-btn">Cancel</button>
-</form> */
-// userCard.innerHTML = form template
-// cancel button functionality
-// clicking cancel returns html to currentInfo and
-// calls event listener to edit button again
-// add submit button click event listener
-
-// submit button on click function
-// 
 
 function handleUserEdit() {
   const currentInfo = userCard.innerHTML;
@@ -383,54 +390,6 @@ function handleUserEditSubmit() {
 }
 
 userEdit.addEventListener('click', handleUserEdit);
-
-// function handleEditSubmit(e) {
-//   event.preventDefault();
-
-//   const thisCard = event.target.closest('.card');
-//   const postId = thisCard.id;
-//   const title = thisCard.querySelector('.title-edit');
-//   const description = thisCard.querySelector('.description-edit');
-
-//   let formIsValid = false;
-
-//   if (title.value === '' && description.value === '') {
-//     formIsValid = false;
-//     description.parentNode.insertAdjacentHTML('beforeend', 
-//     `
-//     <div class="invalid-fb">
-//     Please enter changes to either the title or description.
-//     </div>
-//     `);
-//     return;
-//   } else {
-//     formIsValid = true;
-//   }
-
-//   if (formIsValid) {
-//     const updatedPost = {};
-
-//     if (title.value !== '') {
-//       updatedPost.title = title.value;
-//     }
-//     if (description.value !== '') {
-//       updatedPost.description = description.value;
-//     }
-
-//     fetch(`/api/v1/posts/${postId}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(updatedPost),
-//     })
-//       .then(() => {
-//         postContainer.innerHTML = '';
-//         fetchUser();
-//       })
-//       .catch(err => console.log(err))
-//   }
-// } 
 
 
 // --- EVENT LISTENERS

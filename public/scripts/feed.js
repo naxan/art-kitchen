@@ -23,6 +23,7 @@ function render(posts) {
 }
 
 function postTemplate(post) {
+  // Art posts
     if (post.imageUrl) {
         return `
         <div class="card mb-1 ml-1 art-post">
@@ -40,7 +41,9 @@ function postTemplate(post) {
         </div>
       </div>
         `;
-    } else {
+    } 
+    // Text posts
+    else {
         return `
         <div class="card mb-1 ml-1 text-post">
         <div class="card-body">
