@@ -1,3 +1,8 @@
+// Contents
+// 1. POPULATE USER'S INFO AND POSTS
+// 2. EDIT AND DELETE POSTS
+// 3. EDIT USER
+
 // --- CACHED ELEMENTS
 const profileImage = document.getElementById('profile-image');
 const username = document.getElementById('username');
@@ -34,13 +39,14 @@ function fetchUser() {
 };
 
 function render(user) {
-    // render user's pro img and details
-    // only show profile image if the user has one
+    // Render user's pro img and details
+
+    // Only show profile image if the user has one
     if (user.profileImage) {
         profileImage.setAttribute('src', user.profileImage);
     }
     username.innerText = user.username;
-    // only show user bio if the user has one
+    // Only show user bio if the user has one
     if (user.bio) {
       bio.innerText = user.bio;
     } else {
@@ -116,7 +122,6 @@ function postTemplate(post) {
         <div class="card-body">
           <h5 class="card-title title">${post.title}</h5>
           <p class="card-text body">${post.body}</p>
-            <p class="text-muted">About this piece:</p>
           <p class="text-muted description">${post.description}</p>
           <div class="row mb-0 tags"> 
               <button class="tag btn fauna-tag">${post.tags[0]}</button>
@@ -138,7 +143,22 @@ function postTemplate(post) {
 
 function handlePostEdit(e) {
   const thisCard = event.target.closest('.card');
-  const beforeChanges = thisCard.innerHTML;
+  const beforeChanges = `
+  <div class="btn-group post-menu">
+  <button type="button" 
+    class="btn btn-secondary dropdown-toggle" 
+    data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false">
+  </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <button class="dropdown-item edit-btn" type="button" for="edit">Edit</button>
+      <button class="dropdown-item delete-btn" type="button" for="delete">Delete</button>
+    </div>
+  </div>
+  <div class="card-body">
+  ` 
+  + thisCard.querySelector('.card-body').innerHTML
+  + `</div>`;
 
   // Change post to form template
   const formTemplate = `
@@ -233,8 +253,23 @@ function handleEditSubmit(e) {
 
 function handleDeleteClick(e) {
   const thisCard = event.target.closest('.card');
-  const postId = thisCard.id;
-  const originalCard = thisCard.innerHTML;
+
+  const originalCard = `
+  <div class="btn-group post-menu">
+  <button type="button" 
+    class="btn btn-secondary dropdown-toggle" 
+    data-toggle="dropdown" aria-haspopup="true" 
+    aria-expanded="false">
+  </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <button class="dropdown-item edit-btn" type="button" for="edit">Edit</button>
+      <button class="dropdown-item delete-btn" type="button" for="delete">Delete</button>
+    </div>
+  </div>
+  <div class="card-body">
+  ` 
+  + thisCard.querySelector('.card-body').innerHTML
+  + `</div>`;
 
   thisCard.innerHTML = `
   <h5 class="text-danger">Are you sure you would like to delete this post?</h5>
@@ -277,31 +312,6 @@ function handlePostDestroy(e) {
 // --------------------------------------------
 // --- EDIT USER
 // --------------------------------------------
-
-// userEdit on click function
-// const currentInfo = userCard.innerHTML;
-// create template
-// const form template = 
-/* <form>
-<div class="form-group">
-  <label>Profile Picture URL</label>
-  <input type="text" class="form-control" id="propic-edit" aria-describedby="title">
-</div>
-<div class="form-group">
-  <label>Bio</label>
-  <input type="text" class="form-control" id="bio-edit">
-</div>
-<button type="submit" class="btn btn-primary submit-btn">Submit Changes</button>
-<button class="btn cancel-btn">Cancel</button>
-</form> */
-// userCard.innerHTML = form template
-// cancel button functionality
-// clicking cancel returns html to currentInfo and
-// calls event listener to edit button again
-// add submit button click event listener
-
-// submit button on click function
-// 
 
 function handleUserEdit() {
   const currentInfo = userCard.innerHTML;
@@ -365,8 +375,6 @@ function handleUserEditSubmit() {
       updatedUser.bio = bio.value; 
     }
 
-    console.log(userId);
-
     fetch(`/api/v1/users/${userId}`, {
       method: 'PUT',
       headers: {
@@ -376,65 +384,14 @@ function handleUserEditSubmit() {
     })
       .then(() => {
         location.reload();
-        console.log('huzzah');
       })
   }
 
 }
 
-userEdit.addEventListener('click', handleUserEdit);
-
-// function handleEditSubmit(e) {
-//   event.preventDefault();
-
-//   const thisCard = event.target.closest('.card');
-//   const postId = thisCard.id;
-//   const title = thisCard.querySelector('.title-edit');
-//   const description = thisCard.querySelector('.description-edit');
-
-//   let formIsValid = false;
-
-//   if (title.value === '' && description.value === '') {
-//     formIsValid = false;
-//     description.parentNode.insertAdjacentHTML('beforeend', 
-//     `
-//     <div class="invalid-fb">
-//     Please enter changes to either the title or description.
-//     </div>
-//     `);
-//     return;
-//   } else {
-//     formIsValid = true;
-//   }
-
-//   if (formIsValid) {
-//     const updatedPost = {};
-
-//     if (title.value !== '') {
-//       updatedPost.title = title.value;
-//     }
-//     if (description.value !== '') {
-//       updatedPost.description = description.value;
-//     }
-
-//     fetch(`/api/v1/posts/${postId}`, {
-//       method: 'PUT',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(updatedPost),
-//     })
-//       .then(() => {
-//         postContainer.innerHTML = '';
-//         fetchUser();
-//       })
-//       .catch(err => console.log(err))
-//   }
-// } 
-
 
 // --- EVENT LISTENERS
-
+userEdit.addEventListener('click', handleUserEdit);
 
 // --- CALLED FUNCTIONS
 fetchUser();
