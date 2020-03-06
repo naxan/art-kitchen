@@ -125,6 +125,19 @@ body {
  * Profile
  */
 
+ #profile-body {
+  background-image: url("/images/feed-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgb(77, 77, 77);
+  background-blend-mode: overlay;
+ }
+
+ #profile-body .row {
+
+    justify-content: center;
+ }
+
 #user-profile {
   width: 800px;
   text-align: left;

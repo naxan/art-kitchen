@@ -36,4 +36,21 @@ Ever been stopped by art block or an empty canvas? Our web app, Art Kitchen, gen
 * Add maximum limit on displayed characters in text posts and add 'more' button to view entire post
 * Allow users to click on posts to see the post individually as well as the post's comments
 
+### Wireframes
+
+#### Home Page
+<img src="./public/images/HOME.png"> 
+
+#### Generator Page
+<img src="./public/images/wireframes/GENERATOR.png"> 
+
+#### Profile Page
+<img src="./public/images/wireframes/PROFILE.png"> 
+
+#### FEED Page
+<img src="./public/images/wireframes/FEED.png"> 
+
 ### Screenshots
+
+#### Generator
+<img src="./public/images/screenshots/ingredients-page.png"> 
