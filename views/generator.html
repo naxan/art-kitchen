@@ -1,124 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/styles/main.css">
-    <script defer src="/scripts/generator.js"></script>
-    <script defer src="/scripts/postSubmit.js"></script>
-    <title>Art Kitchen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles/main.css">
+  <script defer src="/scripts/generator.js"></script>
+  <script defer src="/scripts/postSubmit.js"></script>
+  <script defer src="/scripts/logout.js"></script>
+  <title>Art Kitchen</title>
 </head>
+
 <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
-          <div class="inner">
-            <h3 class="masthead-brand">ArtKitchen</h3>
-            
-            <nav class="nav nav-masthead justify-content-center">
-              
-              <a class="nav-link" href="/">Home</a>
-              <a class="nav-link" href="/feed">Feed</a>
-              <a class="nav-link" href="/profile">Profile</a>
-            </nav>
-          </div>
-        </header>
-      
-        <div class="pt-5 container">
+  <div class="container-lg d-flex p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">ArtKitchen</h3>
+        <div class="nav-item btn hidden disable">              </div>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link" href="/feed">Feed</a>
+          <a class="nav-link" href="/profile">Profile</a>
+          <a class="nav-link" id="logout">Logout</a>
+        </nav>
+      </div>
+    </header>
 
+    <main class="row">
+      <!-- GENERATOR -->
+      <div class="col-lg">
+        <h2>Here are your ingredients!</h2>
+        <h5>Draw or write something delicious.</h5>
+        <div class="pt-5 mx-auto" id="generator">
+          <div class="mt-3" id="ingredients">
 
-          <!-- GENERATOR -->
-          <h2>Here are your ingredients!</h2>
-
-          <div class="col-md pt-5" id="generator">
-            <div id="ingredients">
-
-              <div class="row alert alert-danger">
-                <h6>Fauna</h6> <p id="fauna"> </p>
-              </div>
-
-              <div class="row alert alert-success">
-                <h6>Flora</h6> <p id="flora"> </p>
-              </div>
-
-              <div class="row alert alert-warning">
-                <h6>Material</h6> <p id="mat"> </p>
-              </div>
-
-              <div class="row alert alert-info">
-                <h6>Machine</h6> <p id="mach"> </p>
-              </div>
-  
+            <div class="row alert alert-danger">
+              <h6>Fauna</h6>
+              <p id="fauna"> </p>
             </div>
-            <button class="mr-5 float-right btn-sm btn-dark" id="roll">New Ingredients</button>
-          </div>
 
-
-          <!-- POST FORM -->
-              <div class="col-md">
-                  
-                <h2>Don't forget to share what you've made!</h2>
-                
-                <form id="postForm">
-                    
-                    
-                    
-                    <div class="form-group">
-                        <label for="title">Title <span class="require">*</span></label>
-                        <input id="title" type="text" class="form-control" name="title" />
-                    </div>
-
-                    <div class="form-group has-error">
-                      <label for="img-url">Image Link <span class=""></span> <small>(Please link to your image directly))</small></label>
-                      <input id="img-url" type="text" class="form-control" name="slug" />
-                      
-                  </div>
-                    
-                  <div class="form-group">
-                    <label for="body">Body</label>
-                    <textarea id="body" rows="5" class="form-control" name="body" placeholder="Insert your writing here"></textarea>
-                  </div>
-
-                  <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea id="description" rows="5" class="form-control" name="description" ></textarea>
-                  </div>
-              
-                  <div class="form-group">
-                      <p><span class="require">*</span> - required fields</p>
-                  </div>
-                  
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-primary">
-                          Create
-                      </button>
-                      <button class="btn btn-default">
-                          Cancel
-                      </button>
-                  </div>
-                    
-                </form>
+            <div class="row alert alert-success">
+              <h6>Flora</h6>
+              <p id="flora"> </p>
             </div>
-            
 
+            <div class="row alert alert-warning">
+              <h6>Material</h6>
+              <p id="mat"> </p>
+            </div>
+
+            <div class="row alert alert-info">
+              <h6>Machine</h6>
+              <p id="mach"> </p>
+            </div>
+
+          </div>
+          <button class="mr-5 float-right btn-sm btn-dark" id="roll">New Ingredients</button>
         </div>
-      
-    
-      
-        <footer class="mastfoot mt-auto">
-          <div class="inner">
-            <!-- <p>Created by <a href="https://git.generalassemb.ly/akempel/art-kitchen/tree/master">Chyrule</a> - <a href="https://twitter.com/#">@anna</a> and <a href="https://twitter.com/ldbean">@ldbean</a>.</p> -->
-          </div>
-        </footer>
       </div>
 
+      
+      <div class="col-lg">
+
+        <h3>Don't forget to share what you've made!</h3>
+      
+        <div id="form-toggle" class="col btn-toolbar btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="imgtab" checked>New Image Post
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="texttab"> New Text Post
+          </label>
+        </div>
+      
+        <form id="postForm">
+          <div class="form-group">
+            <label for="title">Title <span class="require">*</span></label>
+            <input id="title" type="text" class="form-control" name="title" />
+          </div>
+
+          <div id="imgform" class="form-group has-error">
+            <label for="img-url">Image Link <span class=""></span> <small>(Please link to your image
+                directly)</small></label>
+            <input id="img-url" type="text" class="form-control" name="slug" />
+
+          </div>
+
+          <div id="textform" class="form-group">
+            <label for="body">Body</label>
+            <textarea id="body" rows="5" class="form-control" name="body"
+              placeholder="Insert your writing here"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" rows="5" class="form-control" name="description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <p><span class="require">*</span> - required fields</p>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <!-- <p>Created by <a href="https://git.generalassemb.ly/akempel/art-kitchen/tree/master">Chyrule</a> - <a href="https://twitter.com/#">@anna</a> and <a href="https://twitter.com/ldbean">@ldbean</a>.</p> -->
+      </div>
+    </footer>
+  </div>
 
 
 
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

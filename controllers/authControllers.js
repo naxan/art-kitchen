@@ -86,13 +86,10 @@ const logout = (req, res) => {
         if (err) return res.status(400).json({status: 400, message: 'Something went wrong, please try again.'});
 
         res.json({status: 200});
-        window.location.pathname = '/';
     })
 };
 
 const verify = (req, res) => {
-    console.log('session is: ', req.session);
-
     if (req.session.currentUser) {
         return res.json({
             status: 200,
