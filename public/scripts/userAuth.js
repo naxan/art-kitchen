@@ -81,8 +81,6 @@ function handleSignupSubmit(e) {
                     })
                     .then(res => res.json())
                     .then(() => {
-                        //window.location = '/';
-                        //alert('Account creation success! Now please log in to continue');
                         formInputs.forEach(input => input.value = '');
                         form.insertAdjacentHTML('afterend', `
                         <div>
