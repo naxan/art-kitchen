@@ -80,9 +80,15 @@ function handleSignupSubmit(e) {
                         body: JSON.stringify(userData),
                     })
                     .then(res => res.json())
-                    .then(data => {
-                        window.location = '/';
-                        alert('Account creation success! Now please log in to continue')
+                    .then(() => {
+                        //window.location = '/';
+                        //alert('Account creation success! Now please log in to continue');
+                        formInputs.forEach(input => input.value = '');
+                        form.insertAdjacentHTML('afterend', `
+                        <div>
+                        Your account has been created! Please log in to continue.
+                        </div>
+                        `);
                     })
                     .catch(err => console.log(err));
                 }

@@ -39,13 +39,14 @@ function fetchUser() {
 };
 
 function render(user) {
-    // render user's pro img and details
-    // only show profile image if the user has one
+    // Render user's pro img and details
+
+    // Only show profile image if the user has one
     if (user.profileImage) {
         profileImage.setAttribute('src', user.profileImage);
     }
     username.innerText = user.username;
-    // only show user bio if the user has one
+    // Only show user bio if the user has one
     if (user.bio) {
       bio.innerText = user.bio;
     } else {
@@ -271,8 +272,6 @@ function handleDeleteClick(e) {
   + thisCard.querySelector('.card-body').innerHTML
   + `</div>`;
 
-  console.log(originalCard);
-
   thisCard.innerHTML = `
   <h5 class="text-danger">Are you sure you would like to delete this post?</h5>
   <button class="btn bg-primary no-btn">No</button>
@@ -377,8 +376,6 @@ function handleUserEditSubmit() {
       updatedUser.bio = bio.value; 
     }
 
-    console.log(userId);
-
     fetch(`/api/v1/users/${userId}`, {
       method: 'PUT',
       headers: {
@@ -388,7 +385,6 @@ function handleUserEditSubmit() {
     })
       .then(() => {
         location.reload();
-        console.log('huzzah');
       })
   }
 
