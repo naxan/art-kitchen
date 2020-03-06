@@ -22,6 +22,7 @@ Ever been stopped by art block or an empty canvas? Our web app, Art Kitchen, gen
 * Users can view their posts and user information on their profile page
 * Users can edit their profile (profile picture and bio)
 * Users can also edit their posts (title and description) and delete them.
+* Displays styled 'Error 404' page when a user tries to reach a nonexistent page.
 
 ## Planned Features
 * Ability to upload images
@@ -31,7 +32,6 @@ Ever been stopped by art block or an empty canvas? Our web app, Art Kitchen, gen
 * Feed page showing limited number of posts at a time
 * Add comments to posts
 * Add like/voting options to posts
-* Usernames of creator show up on posts
 * Ability to search for other users and view their profiles
 * Add maximum limit on displayed characters in text posts and add 'more' button to view entire post
 * Allow users to click on posts to see the post individually as well as the post's comments

@@ -41,12 +41,12 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
 }
 
 body {
   display: -ms-flexbox;
   display: flex;
+  background-color: rgb(72, 69, 69);
   color: rgb(255, 255, 255);
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, 0.5);
   
@@ -186,31 +186,47 @@ margin-bottom: 12px;
 }
 .tag {
   font-size: 14px;
- 
+}
+.fauna-tag {
+  background-color: rgb(242, 201, 201);
+}
+.flora-tag {
+  background-color: rgb(224, 245, 220);
+}
+.mat-tag {
+  background-color: rgb(253, 255, 220);
+}
+.mach-tag {
+  background-color: rgb(191, 216, 247);
 }
 .tags {
   position: absolute;
   bottom: 5px;
-  background-color: azure;
+  display: flex;
+  flex-wrap: nowrap;
 }
-
 .post-menu {}
 
  /*
-  * Posts / Generator
+  * Kitchen
   */
+#kitchen {
+  background-image: url("/images/woodbg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
 #generator {
    background-image: url("/images/ingredients-bg.png");
    width: 500px;
    height: 500px;
   background-size: contain;
-  
 }
 #ingredients {
   max-width: 450px; 
   padding: 40px;
+  margin-left: 15px;
+  mix-blend-mode: multiply;
 }
-
 #ingredients  p {
  margin-left: 80px;
   color: #333;
@@ -218,6 +234,7 @@ margin-bottom: 12px;
   font-size: 26px;
   margin-bottom: -8px;
   margin-top: -5px;
+  opacity: 100%;
 }
 #form-toggle {
  display: block;

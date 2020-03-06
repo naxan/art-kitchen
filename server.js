@@ -44,5 +44,12 @@ app.use('/', routes.views);
 // api
 app.use('/api/v1', routes.api);
 
+// 404
+app.use('*', (req, res) => {
+    res.sendFile('views/error404.html', {
+        root: __dirname
+    });
+})
+
 // ------ START SERVER
 app.listen(PORT, () => console.log(`Server running at localhost:${PORT}`));
